@@ -10,13 +10,14 @@ const RestaurantCard = ({
   setRestoId: Dispatch<SetStateAction<string>>;
   handleDelete: (id: any) => Promise<void>;
 }) => {
-  const imageData = `data:${
-    resto.featuredImage.contentType
-  };base64,${Buffer.from(resto.featuredImage.data.data).toString("base64")}`;
+  // const imageData = `data:${
+  //   resto.featuredImage.contentType
+  // };base64,${Buffer.from(resto.featuredImage.data.data).toString("base64")}`;
+  // const imageData = `data:${resto.featuredImage.contentType};base64,${resto.featuredImage.data}`
   return (
     <div className="restoCard" key={resto.id}>
       <div className="featuredImg">
-        <img src={imageData} alt="restaurant-featured" />
+        <img src={resto.featuredImage} alt="restaurant-featured" />
       </div>
       <div className="cardBody">
         <div className="cardHead">

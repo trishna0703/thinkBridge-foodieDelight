@@ -23,12 +23,7 @@ const RestaurantForm = ({
 
   useEffect(() => {
     if (initialValues.featuredImage) {
-      const imageData = `data:${
-        initialValues.featuredImage.contentType
-      };base64,${Buffer.from(initialValues.featuredImage.data.data).toString(
-        "base64"
-      )}`;
-      setPreviews(imageData);
+      setPreviews(initialValues.featuredImage);
     }
   }, []);
 
@@ -97,11 +92,11 @@ const RestaurantForm = ({
               />
             </div>
 
-            {!initialValues._id && (
+            {/* {!initialValues._id && ( */}
               <div className="field">
                 <div className="file-input-container">
                   <label htmlFor="menu" className="custom-trigger">
-                    Add Featured Image
+                    {initialValues?.featuredImage ? "Update Featured Image" : "Add Featured Image"}
                   </label>
                   <input
                     type="file"
@@ -128,7 +123,7 @@ const RestaurantForm = ({
                   ) : null}
                 </div>
               </div>
-            )}
+            {/* )} */}
 
             <div className="field">
               <label htmlFor="openingTime">Opening Time</label>
