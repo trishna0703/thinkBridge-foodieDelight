@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Gourmet Haven",
+    "description": "A fine dining experience with international cuisine.",
+    "location": "123 Elm Street, Springfield",
+    "menu": ["menu1.pdf", "menu2.pdf"],
+    "phoneNumber": "1234567890",
+    "email": "contact@gourmethaven.com",
+    "openingTime": "08:00",
+    "closingTime": "22:00"
+  },
+  {
+    "id": 2,
+    "name": "Pizza Paradise",
+    "description": "Delicious handmade pizzas with a variety of toppings.",
+    "location": "456 Maple Avenue, Springfield",
+    "menu": ["menu3.pdf"],
+    "phoneNumber": "0987654321",
+    "email": "info@pizzaparadise.com",
+    "openingTime": "10:00",
+    "closingTime": "23:00"
+  },
+  {
+    "id": 3,
+    "name": "Burger Barn",
+    "description": "Home of the best burgers in town.",
+    "location": "789 Oak Road, Springfield",
+    "menu": ["menu4.pdf"],
+    "phoneNumber": "1122334455",
+    "email": "hello@burgerbarn.com",
+    "openingTime": "11:00",
+    "closingTime": "21:00"
+  },
+  {
+    "id": 4,
+    "name": "Sushi World",
+    "description": "Fresh and authentic sushi and sashimi.",
+    "location": "321 Pine Street, Springfield",
+    "menu": ["menu5.pdf"],
+    "phoneNumber": "2233445566",
+    "email": "contact@sushiworld.com",
+    "openingTime": "12:00",
+    "closingTime": "22:00"
+  },
+  {
+    "id": 5,
+    "name": "Taco Town",
+    "description": "Authentic Mexican tacos and more.",
+    "location": "654 Cedar Lane, Springfield",
+    "menu": ["menu6.pdf"],
+    "phoneNumber": "3344556677",
+    "email": "info@tacotown.com",
+    "openingTime": "09:00",
+    "closingTime": "20:00"
+  },
+  {
+    "id": 6,
+    "name": "Pasta Palace",
+    "description": "Delicious pasta dishes made from scratch.",
+    "location": "987 Birch Boulevard, Springfield",
+    "menu": ["menu7.pdf"],
+    "phoneNumber": "4455667788",
+    "email": "hello@pastapalace.com",
+    "openingTime": "10:00",
+    "closingTime": "22:00"
+  }
+]

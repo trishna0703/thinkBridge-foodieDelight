@@ -1,0 +1,551 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+header {
+  background: maroon;
+}
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+
+  .pageHeading {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .searchSection {
+    width: 25%;
+
+    h3 {
+      text-align: end;
+      font-size: 20px;
+      font-weight: 700;
+      color: #777474;
+    }
+
+    input {
+      background: #eaeaea;
+      height: 50px;
+      border: 1px solid #9f9d9d;
+      width: 100%;
+      border-radius: 5px;
+      color: #000;
+      padding: 10px;
+    }
+  }
+}
+
+.overlayImage {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../../public/banner.jpg');
+  background-position: center;
+}
+
+.bannerWrapper {
+  position: relative;
+}
+
+.banner.pageHeading {
+  position: relative;
+  height: 300px;
+  z-index: 1;
+  background: #00000099;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    width: 70%;
+    font-size: 60px;
+    margin: auto;
+    color: #fff;
+  }
+
+}
+
+.banner.pageHeading.explorePage {
+  h1 {
+    width: 85%;
+  }
+}
+
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.header {
+  width: 88%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  background: maroon;
+  color: #fff;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 40%;
+
+    h2 {
+      font-size: 60px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    span {
+      font-size: 30px;
+      font-weight: 800;
+      margin-right: 5px;
+    }
+  }
+
+  .menu {
+    width: 60%;
+
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      li {
+        margin-left: 20px;
+
+        &:last-of-type {
+          a {
+            background-color: rgb(210, 210, 5);
+            color: maroon !important;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+
+            &:hover {
+              background-color: rgb(175, 175, 3);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pageHeading h1 {
+  color: maroon;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.restaurantForm {
+  width: 70%;
+  margin: 2rem auto;
+
+  form {
+    box-shadow: 1px 1px 8px 0 #ccc;
+    border-radius: 8px;
+
+    .field {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px 2rem;
+
+      label {
+        margin-bottom: 8px;
+        color: #aeadad;
+        font-weight: 500;
+      }
+
+      input {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        width: 100%;
+        min-height: 50px;
+        padding: 0 10px;
+      }
+
+      .file-input-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .file-input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .custom-trigger {
+        display: inline-block;
+        padding: 8px 0px;
+        color: #347001;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .file-name {
+        display: block;
+        margin-top: 8px;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .thumbnail {
+        width: 100px;
+        height: 100px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .thumbnail .remove-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+
+    button.btn.primary-btn {
+      background: maroon;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    button.btn.secondary-btn {
+      background: grey;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .fieldTime {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        width: 33%;
+
+        &:first-of-type {
+          display: flex;
+          justify-content: space-between;
+          padding-right: 10px;
+        }
+      }
+
+    }
+
+    .operatingHours {
+      padding: 10px 2rem;
+    }
+  }
+}
+
+.btn.show {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.menuDrop {
+  .dropdown-toggle {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 10px 0;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      background: none;
+    }
+
+    &:focus-visible {
+      background-color: transparent !important;
+      border-color: transparent !important;
+    }
+
+    &:active {
+      background-color: transparent !important;
+      border-color: transparent !important;
+    }
+  }
+
+}
+
+.restoList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 1rem 0;
+}
+
+.featuredImg {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 200px;
+
+  }
+}
+
+.restoCard {
+  flex: 1 1 23%;
+  width: 23%;
+  max-width: 23%;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 5px 0 #ccc;
+  border-radius: 2px;
+  margin: 10px;
+  padding: 10px;
+
+  .cardBody {
+    .cardHead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2.cardTitle {
+        color: maroon;
+        font-size: 24px;
+        font-weight: 600;
+        width: 95%;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+
+
+    span {
+      color: #868585;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 5px 0;
+      overflow: hidden;
+
+      &:first-of-type {
+        span.cardContent {
+          color: #1f1e1e;
+          font-weight: 700;
+        }
+      }
+
+
+      span.cardContent {
+        width: 80%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+
+
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .restoCard {
+    flex: 1 1 30%;
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 992px) {
+  .restoCard {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+  .main {
+    .searchSection {
+      width: 35%;
+    }
+  }
+}
+
+@media (max-width : 768px) {
+  .main {
+    .searchSection {
+      width: 45%;
+    }
+  }
+
+  .header {
+    padding: 1rem;
+
+    .logo {
+
+      h2 {
+        font-size: 36px;
+      }
+
+      span {
+        font-size: 16px;
+      }
+
+      img {
+        width: 15%;
+      }
+    }
+
+    .menu {
+      ul {
+        li {
+          button {
+            padding: 10px;
+          }
+        }
+      }
+    }
+
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    .main {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  .restaurantForm {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .restoCard {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .main {
+    .pageHeading {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+
+      h1 {
+        padding: 0;
+      }
+
+      .searchSection {
+        width: 100%;
+
+        h3 {
+          font-size: 16px;
+          text-align: start;
+          padding: 0;
+        }
+      }
+    }
+
+  }
+
+  .header {
+    flex-direction: column;
+
+
+    .logo {
+      width: 100%;
+      justify-content: center;
+      border-bottom: 1px solid #a4a4a4;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+
+      h2 {
+        font-size: 48px;
+      }
+
+      span {
+        font-size: 24px;
+      }
+    }
+
+    .menu {
+      width: 100%;
+
+      ul {
+        justify-content: space-between;
+        margin-left: 0;
+        padding: 0;
+
+        li {
+
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
