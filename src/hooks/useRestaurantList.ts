@@ -4,7 +4,10 @@ import axios from "axios";
 
 const useRestaurantList = () => {
   const getRestaurants = async () => {
-    let list = await axios.get(`${API}getRestaurantList`);
+    let list = await axios.get(`${API}getRestaurantList`,{
+      headers: {
+        'Content-Type': 'application/json',
+      }});
 
     return list.data.data;
   };
