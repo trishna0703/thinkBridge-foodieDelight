@@ -9,6 +9,7 @@ import useUpdateRestaurant from "@/hooks/useUpdateRestaurant";
 import "react-toastify/dist/ReactToastify.css";
 import RestaurantCard from "./RestaurantCard";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { IoSearch } from "react-icons/io5";
 
 const RestaurantList = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -126,11 +127,16 @@ const RestaurantList = () => {
             <div className="pageHeading">
               <div className="searchSection">
                 <h3>Search Restaurants</h3>
-                <input
-                  type="text"
-                  placeholder="What?"
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                />
+                <div className="searchField">
+                  <span className="field-icon">
+                    <IoSearch />
+                  </span>
+                  <input
+                    type="text"
+                    placeholder="What?"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
               </div>
             </div>
             <div className="text-center">{isListLoading && <Spinner />}</div>

@@ -24,23 +24,13 @@ header {
   }
 
   .searchSection {
-    width: 25%;
+    width: 30%;
 
     h3 {
       text-align: end;
       font-size: 20px;
       font-weight: 700;
       color: #777474;
-    }
-
-    input {
-      background: #eaeaea;
-      height: 50px;
-      border: 1px solid #9f9d9d;
-      width: 100%;
-      border-radius: 5px;
-      color: #000;
-      padding: 10px;
     }
   }
 }
@@ -335,6 +325,33 @@ a {
   }
 }
 
+.searchField {
+  position: relative;
+  span.field-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #dad7d7;
+    font-size: 26px;
+    padding: 12px;
+    color: maroon;
+    border-radius: 10px 0 0 10px;
+  }
+
+  input {
+    /* background: #eaeaea; */
+    height: 50px;
+    border: 1px solid #dad7d7;
+    width: 100%;
+    border-radius: 10px;
+    color: #000;
+    padding: 10px;
+    padding-left: 4rem;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
 .btn.show {
   background-color: transparent !important;
   border-color: transparent !important;
