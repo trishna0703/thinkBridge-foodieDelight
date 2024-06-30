@@ -12,8 +12,6 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const RestaurantList = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const { data: restaurantList, isLoading: isListLoading } =
-    useRestaurantList();
   const { mutateAsync: deleteRestaurant } = useDeleteRestaurant();
   const { mutateAsync: updateRestaurant } = useUpdateRestaurant();
   const { invalidateRestaurantList } = useInvalidateQuery();
@@ -21,6 +19,13 @@ const RestaurantList = () => {
   const [restoId, setRestoId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+  const {
+    data: restaurantList,
+    isLoading: isListLoading,
+    refetch,
+  } = useRestaurantList({ page: currentPage, limit: itemsPerPage });
+
+  console.log({ restaurantList });
 
   const initialValues =
     restoId != ""
@@ -49,13 +54,16 @@ const RestaurantList = () => {
   };
 
   const filterRestaurants = (query: string) => {
+    console.log({ restaurantList });
     if (!query) {
       setFilteredRestaurants([]);
     } else {
-      const filtered = restaurantList.filter(
+      const filtered = restaurantList?.data?.filter(
         (restaurant: Record<string, any>) =>
           restaurant.name.toLowerCase().includes(query.toLowerCase())
       );
+
+      console.log({ filtered });
       setFilteredRestaurants(filtered);
     }
   };
@@ -86,25 +94,11 @@ const RestaurantList = () => {
     }
   }, [searchQuery]);
 
-  const paginate = (items: any[], pageNumber: number, itemsPerPage: number) => {
-    const startIndex = (pageNumber - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return items?.slice(startIndex, endIndex);
-  };
+  useEffect(() => {
+    refetch();
+  }, [currentPage]);
 
-  const paginatedRestaurants = !isListLoading
-    ? paginate(
-        filteredRestaurants.length > 0 ? filteredRestaurants : restaurantList,
-        currentPage,
-        itemsPerPage
-      )
-    : [];
-
-  const totalPages = Math.ceil(
-    (filteredRestaurants.length > 0
-      ? filteredRestaurants.length
-      : restaurantList?.length || 0) / itemsPerPage
-  );
+  const totalPages = restaurantList?.pages || 0;
 
   return (
     <>
@@ -141,53 +135,67 @@ const RestaurantList = () => {
             </div>
             <div className="text-center">{isListLoading && <Spinner />}</div>
             <div className="restoList">
-              {paginatedRestaurants?.length > 0
-                ? paginatedRestaurants?.map(
-                    (resto: Record<string, string | any>) => {
-                      return (
-                        <RestaurantCard
-                          {...{ resto, setRestoId, handleDelete }}
-                        />
-                      );
-                    }
-                  )
-                : null}
+              {searchQuery != "" ? (
+                filteredRestaurants.map(
+                  (resto: Record<string, string | any>) => {
+                    return (
+                      <RestaurantCard
+                        {...{ resto, setRestoId, handleDelete }}
+                      />
+                    );
+                  }
+                )
+              ) : restaurantList?.data?.length > 0 ? (
+                restaurantList?.data?.map(
+                  (resto: Record<string, string | any>) => {
+                    return (
+                      <RestaurantCard
+                        {...{ resto, setRestoId, handleDelete }}
+                      />
+                    );
+                  }
+                )
+              ) : (
+                <div className="m-auto">No record found.</div>
+              )}
+
+              {searchQuery != "" && !filteredRestaurants.length && (
+                <div className="m-auto error-message">No record found.</div>
+              )}
             </div>
-            {paginatedRestaurants?.length > 0 ? (
-              <div className="paginationSection">
-                <Pagination>
-                  <Pagination.First
-                    onClick={() => setCurrentPage(1)}
-                    disabled={currentPage === 1}
-                  />
-                  <Pagination.Prev
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.max(prev - 1, 1))
-                    }
-                    disabled={currentPage === 1}
-                  />
-                  {[...Array(totalPages).keys()].map((number) => (
-                    <Pagination.Item
-                      key={number + 1}
-                      active={number + 1 === currentPage}
-                      onClick={() => setCurrentPage(number + 1)}
-                    >
-                      {number + 1}
-                    </Pagination.Item>
-                  ))}
-                  <Pagination.Next
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                    }
-                    disabled={currentPage === totalPages}
-                  />
-                  <Pagination.Last
-                    onClick={() => setCurrentPage(totalPages)}
-                    disabled={currentPage === totalPages}
-                  />
-                </Pagination>
-              </div>
-            ) : null}
+            <div className="paginationSection">
+              <Pagination>
+                <Pagination.First
+                  onClick={() => setCurrentPage(1)}
+                  disabled={currentPage === 1}
+                />
+                <Pagination.Prev
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                />
+                {Array.from({ length: totalPages }, (_, number) => (
+                  <Pagination.Item
+                    key={number + 1}
+                    active={number + 1 === currentPage}
+                    onClick={() => setCurrentPage(number + 1)}
+                  >
+                    {number + 1}
+                  </Pagination.Item>
+                ))}
+                <Pagination.Next
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                />
+                <Pagination.Last
+                  onClick={() => setCurrentPage(totalPages)}
+                  disabled={currentPage === totalPages}
+                />
+              </Pagination>
+            </div>
           </div>
         </div>
       )}
