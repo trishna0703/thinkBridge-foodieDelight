@@ -198,7 +198,7 @@ const RestaurantForm = ({
                 </div>
               </div>
 
-              <div className="field">
+              <div className="field fileField">
                 <div className="file-input-container">
                   <label htmlFor="menu" className="custom-trigger">
                     {initialValues?.featuredImage

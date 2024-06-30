@@ -29,7 +29,7 @@ const RestaurantList = () => {
 
   const initialValues =
     restoId != ""
-      ? restaurantList.find(
+      ? restaurantList?.data?.find(
           (resto: Record<string, any>) => resto._id === restoId
         )
       : null;
@@ -135,33 +135,33 @@ const RestaurantList = () => {
             </div>
             <div className="text-center">{isListLoading && <Spinner />}</div>
             <div className="restoList">
-              {searchQuery != "" ? (
-                filteredRestaurants.map(
-                  (resto: Record<string, string | any>) => {
-                    return (
-                      <RestaurantCard
-                        {...{ resto, setRestoId, handleDelete }}
-                      />
-                    );
-                  }
-                )
-              ) : restaurantList?.data?.length > 0 ? (
-                restaurantList?.data?.map(
-                  (resto: Record<string, string | any>) => {
-                    return (
-                      <RestaurantCard
-                        {...{ resto, setRestoId, handleDelete }}
-                      />
-                    );
-                  }
-                )
-              ) : (
-                <div className="m-auto">No record found.</div>
-              )}
+              {searchQuery != ""
+                ? filteredRestaurants.map(
+                    (resto: Record<string, string | any>) => {
+                      return (
+                        <RestaurantCard
+                          {...{ resto, setRestoId, handleDelete }}
+                        />
+                      );
+                    }
+                  )
+                : !isListLoading && restaurantList?.data?.length > 0
+                ? restaurantList?.data?.map(
+                    (resto: Record<string, string | any>) => {
+                      return (
+                        <RestaurantCard
+                          {...{ resto, setRestoId, handleDelete }}
+                        />
+                      );
+                    }
+                  )
+                : null}
 
-              {searchQuery != "" && !filteredRestaurants.length && (
-                <div className="m-auto error-message">No record found.</div>
-              )}
+              {searchQuery != "" &&
+                !filteredRestaurants.length &&
+                !isListLoading && (
+                  <div className="m-auto error-message">No record found.</div>
+                )}
             </div>
             <div className="paginationSection">
               <Pagination>
