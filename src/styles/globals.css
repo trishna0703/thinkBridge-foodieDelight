@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .content {
   display: flex;
   justify-content: center;
@@ -53,7 +52,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../../public/banner.jpg');
+  background: url("../../public/banner.jpg");
   background-position: center;
 }
 
@@ -75,7 +74,6 @@ header {
     margin: auto;
     color: #fff;
   }
-
 }
 
 .banner.pageHeading.explorePage {
@@ -83,7 +81,6 @@ header {
     width: 85%;
   }
 }
-
 
 a {
   text-decoration: none !important;
@@ -159,15 +156,38 @@ a {
   margin: 2rem auto;
 
   form {
+    padding: 1rem 0;
     box-shadow: 1px 1px 8px 0 #ccc;
     border-radius: 8px;
-
+    .inner-field {
+      width: 100%;
+      position: relative;
+    }
+    .fieldWrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 90px;
+    }
     .field {
       display: flex;
       align-items: flex-start;
       justify-content: center;
       flex-direction: column;
       padding: 10px 2rem;
+      position: relative;
+      width: 50%;
+
+      span.field-icon {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: #dad7d7;
+        font-size: 26px;
+        padding: 12px;
+        color: maroon;
+        border-radius: 10px 0 0 10px;
+      }
 
       label {
         margin-bottom: 8px;
@@ -177,10 +197,14 @@ a {
 
       input {
         border: 1px solid #ccc;
-        border-radius: 2px;
+        border-radius: 10px;
         width: 100%;
         min-height: 50px;
         padding: 0 10px;
+        padding-left: 4rem;
+        &:focus-visible {
+          outline: none;
+        }
       }
 
       .file-input-container {
@@ -250,7 +274,24 @@ a {
         cursor: pointer;
       }
     }
-
+    .fieldWrapper.location {
+      height: 80px;
+      .field {
+        width: 100%;
+      }
+    }
+    .fieldWrapper.operationalHours {
+      height: 110px;
+      .field {
+        label {
+          color: maroon;
+          font-weight: 400;
+        }
+        .field-icon {
+          top: 0px;
+        }
+      }
+    }
     button.btn.primary-btn {
       background: maroon;
       color: #fff;
@@ -283,12 +324,11 @@ a {
           padding-right: 10px;
         }
       }
-
     }
 
-    .operatingHours {
+    /* .operatingHours {
       padding: 10px 2rem;
-    }
+    } */
   }
 }
 
@@ -321,7 +361,6 @@ a {
       border-color: transparent !important;
     }
   }
-
 }
 
 .restoList {
@@ -337,10 +376,12 @@ a {
   img {
     width: 100%;
     height: 200px;
-
   }
 }
 
+ul.pagination {
+  justify-content: flex-end;
+}
 .restoCard {
   flex: 1 1 23%;
   width: 23%;
@@ -371,7 +412,6 @@ a {
       }
     }
 
-
     span {
       color: #868585;
       font-size: 14px;
@@ -389,15 +429,12 @@ a {
         }
       }
 
-
       span.cardContent {
         width: 80%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         display: block;
-
-
       }
 
       img {
@@ -421,6 +458,41 @@ a {
     flex: 1 1 45%;
     max-width: 45%;
   }
+  .restaurantForm {
+    & form {
+      .fieldWrapper {
+        flex-direction: column;
+        height: auto;
+
+        .field {
+          width: 100%;
+          height: 90px;
+
+          .field-icon {
+            top: 0px;
+          }
+        }
+      }
+      & .fieldWrapper.operationalHours {
+        height: auto;
+        & .field {
+          height: 110px;
+          justify-content: flex-start;
+
+          .field-icon {
+            top: 0px;
+          }
+        }
+      }
+      & .fieldWrapper.location {
+        & .field {
+          .field-icon {
+            top: 0px;
+          }
+        }
+      }
+    }
+  }
 
   .main {
     .searchSection {
@@ -429,7 +501,7 @@ a {
   }
 }
 
-@media (max-width : 768px) {
+@media (max-width: 768px) {
   .main {
     .searchSection {
       width: 45%;
@@ -440,7 +512,6 @@ a {
     padding: 1rem;
 
     .logo {
-
       h2 {
         font-size: 36px;
       }
@@ -463,13 +534,11 @@ a {
         }
       }
     }
-
   }
 
   .content {
     flex-direction: column;
     align-items: flex-start;
-
 
     .main {
       width: 95%;
@@ -510,12 +579,10 @@ a {
         }
       }
     }
-
   }
 
   .header {
     flex-direction: column;
-
 
     .logo {
       width: 100%;
@@ -542,7 +609,6 @@ a {
         padding: 0;
 
         li {
-
           margin-left: 0;
         }
       }
